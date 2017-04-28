@@ -1,0 +1,179 @@
+% Search for all the places that say "PUT SOMETHING HERE".
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+
+\def\Name{Ninh Hai DO}  % Your name
+\def\SID{25949105}  % Your student ID number
+\def\Homework{1} % Number of Homework
+\def\Session{Spring 2017}
+
+\newcommand{\disp}{\displaystyle}
+
+\title{CS170--Spring 2017 --- Homework \Homework Solutions}
+\author{\Name, SID \SID}
+\markboth{CS170--\Session\  Homework \Homework\ \Name}{CS170--\Session\ Homework \Homework\ \Name}
+\pagestyle{myheadings}
+\date{}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproofmark{$\Box$}
+\newenvironment{proof}{\par{\bf Proof}:}{\endproofmark\smallskip}
+
+\textheight=9in
+\textwidth=6.5in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+
+\begin{document}
+\maketitle
+
+Collaborators: NONE
+
+\section*{1. Course Syllabus}
+\begin{qparts}
+\item
+Not OK
+
+\item
+Not OK
+
+\item
+Not OK
+
+\item
+OK
+
+\item
+Not OK
+
+\end{qparts}
+
+
+
+\newpage
+\section*{2. Shortcut Question: Asymptotic Complexity Comparisons}
+\begin{qparts}
+\item
+The new order is: $f_3,\ f_7,\ f_2,\ f_5,\ f_4,\ f_9,\ f_8,\ f_6,\ f_1$
+
+\item
+Consider the limit:
+%
+\begin{equation}
+	L = \lim_{x\rightarrow\infty}\frac{\log x}{x^{\varepsilon}}
+\end{equation}
+%
+Since both nominator and denominator go to $\infty$ for $x\rightarrow\infty$, using De L'Hopital rule gives:
+%
+\begin{equation}
+	L = \lim_{x\rightarrow\infty}\frac{\log x}{x^{\varepsilon}} = \lim_{x\rightarrow\infty}\frac{(\log x)'}{(x^{\varepsilon})'} = \lim_{x\rightarrow\infty}\frac{\frac{1}{x\ln a}}{x^{\varepsilon - 1}} = \lim_{x\rightarrow\infty}\frac{1}{x^{\varepsilon}\ln a} = 0
+\end{equation}
+%
+where $a$ is the base of logarithm. This means the quotient $\disp\frac{\log x}{x^{\varepsilon}} < 1$ for large $x$. Therefore, $\log x \in O(x^{\varepsilon})$
+
+%\item
+%$f_1(n) = 0$ \\
+%$f_2(n) = n$, since the LHS $\disp =\frac{n(n+1)}{2}\in \Theta(n^2)$, not $\Theta((f(n))=\Theta(n)$
+
+%\item
+%YOUR ANSWER GOES HERE
+
+\end{qparts}
+
+
+\newpage
+\section*{3. Recurrence Relations}
+\begin{qparts}
+\item
+Using Master theorem with $\disp a=2,\ b=2,\ d=\frac{1}{2}$, we have $\log_b a = 1 > \frac{1}{2} = d$, so:
+%
+\begin{equation}
+	T(n) = \Theta(n^{\log_2 2}) =  \Theta(n)
+\end{equation}
+%
+
+\item
+Expanding T gives:
+%
+\begin{align*}
+	T(n) &= T(n-1) + c^n \\
+	&= T(n-2) + c^{n-1} + c^n \\
+	&= T(1) + c^2 + c^3 + \dots + c^{n-1} + c^n \\
+	&= T(1) + c^2(1 + c + c^2 + \dots + c^{n-2}) \\
+	&= T(1) + c^2\times\frac{c^{n-1} -1}{c - 1} \\
+	&= \Theta(c^n)
+\end{align*}
+%
+
+\item
+Expanding T(n) tree, we see that the tree has $\log\log n$ layers, layer i-$th$ has $2^i\times 3$ operations as below: \\
+Layer 0: $T(n)\qquad 2^0\times 3\ \text{operations}$ \\
+Layer 1: $T(\sqrt{n})\quad T(\sqrt{n})\qquad 2^1\times 3\ \text{operations}$ \\
+Layer 2: $T(\sqrt[4]{n})\quad T(\sqrt[4]{n})\quad T(\sqrt[4]{n})\quad T(\sqrt[4]{n})\qquad 2^2\times 3\ \text{operations}$ \\
+etc. \\
+The number of operation is:
+%
+\begin{align*}
+	T(n) &= 3\times\left(1 + 2 + 4 + \dots + 2^{\log\log n}\right) \\
+	&= 3\times\left(2^{\log\log n +1} - 1\right) \\
+	&= \Theta(\log n)
+\end{align*}
+%
+
+\end{qparts}
+
+
+\newpage
+\section*{4. Bound the Running Time}
+\begin{qparts}
+\item
+Replace $n$ by $2^k$ we see the algorithm $f2$ expands in $\Theta(k)$ levels similar to Fibonacci algorithm $f1$ expanding in $\Theta(n)$ levels in example. That is $f2(n/2)=f2(2^{k-1})$, $f2(n/2)=f2(2^{k-2})$, corresponding to $f1(n-1)$, $f1(n-2)$. \\
+Therefore, the answer is the Fibonacci answer with replacing $n$ by $k=\log n$. That is\\ $\Theta\left(\left(\frac{1}{2}\left(1+\sqrt{5}\right)\right)^{\log n}\right)$
+
+\item
+In the best case $n = 2^k$, the runtime is $\Theta(\log n)$. It is the best case because in each recursion call, the value of argument always reduces by half, never increases.\\
+In the worst case $n = 2^k + 1$, the runtime is $\Theta(\log n + \log n) ~ \Theta(\log n)$. The first $\log n$ is the number of times where argument adding up with 1, after each time, the argument becomes even and is reduced by half in next recursion call. Since it alternates between odd and even in each recursion call, the number of times to call $f3(n/2)$ is approximately equal to the number of times to call $f3(n + 1)$, that is reason why we have two $\log n$. This is the worst case because there is no case of n that yields two consecutive $f(n+1)$ recursion calls\\
+The algorithm $f3$ is lower and upper bounded by $\Theta(\log n)$, so its runtime is $\Theta(\log n)$.
+
+\item
+In the best case $n = 2^k$, the runtime is $\Theta(\log n)$.\\
+In the worst case $n = 2^k + 1$, the runtime is $\Theta(\log n + 2 * \log n + 2 * \log n) ~ \Theta(\log n)$. The first $\log n$ is the number of times where argument reduced by half, the second $2*\log n$ is the number of times after which the argument turning in to $3^k - 1$, the third $2*\log n$ is the number of times the argument alternates between $f4(n/2)$ and $f4(3n+1)$.\\
+The algorithm $f4$ is lower and upper bounded by $\Theta(\log n)$, so its runtime is $\Theta(\log n)$.
+
+
+\end{qparts}
+
+
+\newpage
+\section*{5.}
+YOUR ANSWER GOES HERE
+
+
+\newpage
+\section*{6. Merged Median}
+\textbf{\underline{Main idea:}}\\
+1. Find medians of k sorted arrays in $\Theta(k)$, we have the array M of k medians. Find the median $mM$ of M in $O(k)$ using the devide-and-conquer algorithm in lecture.\\
+2. For each original array, devide it into two subarrays, one smaller or equal to $mM$, the other is larger than $mM$. After doing it to all k arrays, eliminate the parts that add up less than a half number of $kl$ elements.\\
+3. Repeat step 1 and 2 until the number of eliminated element on one side equal to a half number of $kl$ elements.\\
+\\
+\textbf{\underline{Pseudocode:}}\\
+%
+\begin{equation}
+still working
+\end{equation}
+%
+\\
+\textbf{\underline{Proof of Correctness:}}\\
+It is correct because we always use a single number $mM$, aka the median of medians, in each recursion call to divide the k arrays, so no matter that they are k separate arrays or 1 big array, as long as we keep track of the number of eliminated elements (to make sure it reach a half of n on one side) we obtain the middle element, which is the median of all array.
+\\
+\textbf{\underline{Running time:}}\\
+For each recursion call, finding medians of k sorted arrays takes $\Theta(k)$, finding the median of the medians' array takes $O(k)$ time (using the randonm devide-and-conquer algorithm in lecture), dividing array in step 2 using binary search takes $O(k\log l)$ time. Therefore, the runtime for each iteration is $O(k + k\log l)$.
+Since the argument of each recursion call reduces by half, there is around $O(\log l)$ recursion layers.\\
+The total runtime is: $O(k\log l + k\log^2 l)$ or $O(k\log^2 l)$
+
+
+\end{document}
+\grid

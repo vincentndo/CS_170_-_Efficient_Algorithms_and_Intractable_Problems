@@ -1,0 +1,249 @@
+%%%%% Don't Make Changes Below Here %%%%%
+\documentclass{article}\usepackage[utf8]{inputenc}\usepackage[margin=0.4cm,top=0.4cm,bottom=0.4cm]{geometry}\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{calligra}\usepackage{tikz}\usepackage{hyperref}\usetikzlibrary{matrix,fit,chains,calc,scopes}\usepackage{tcolorbox}\tcbuselibrary{skins}\tcbset{Baystyle/.style={sharp corners,enhanced,boxrule=6pt,colframe=Aquamarine,height=\textheight,width=\textwidth,borderline={8pt}{-11pt}{},}}\usepackage{amsmath,amssymb,amsthm,tikz,tkz-graph,color,chngpage,soul,hyperref,csquotes,graphicx,floatrow}\newcommand*{\QEDB}{\hfill\ensuremath{\square}}\newtheorem*{prop}{Proposition}\renewcommand{\theenumi}{\alph{enumi}}\usepackage[shortlabels]{enumitem}\usetikzlibrary{matrix,calc}\MakeOuterQuote{"}\newtheorem{theorem}{Theorem} \usetikzlibrary{shapes} \usepackage{lipsum}\usepackage{tabularx,ragged2e,booktabs,caption}\tcbuselibrary{breakable}\newenvironment{yframed}{\begin{tcolorbox}[breakable,colback=gray!3,title after break={\textit{\color{red}Solution (cont.)}},colbacktitle=gray!3, coltitle=black,titlerule=-1pt] }{\end{tcolorbox}}\newtcolorbox{mybox}{colback=black!15!white, colframe=white,arc=12pt}\newtcolorbox{myboxot}{colback=green!15!white, colframe=white,arc=12pt,width=110pt, height=27pt}\newtcbox{\mylib}{enhanced,boxrule=0pt,top=0mm,bottom=0mm,right=0mm,left=4mm,arc=4pt,boxsep=9pt,before upper={\vphantom{dlg}},colframe=green!50!black,coltext=green!25!black,colback=green!10!white,overlay={\begin{tcbclipinterior}\fill[green!75!blue!50!white] (frame.south west)rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {Problem} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}\newtcbox{\mylibot}{enhanced,boxrule=0pt,top=0mm,bottom=0mm,right=0mm,arc=4pt,boxsep=9pt,before upper={\vphantom{dlg}},colframe=green!50!black,coltext=green!25!black,colback=green!10!white,overlay={\begin{tcbclipinterior}\fill[red!75!blue!50!white] (frame.south west)rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {Other} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+\def\Title{\begin{tcolorbox}[Baystyle,]{\begin{center}\vspace*{0.14\textheight}
+{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}}
+\rule{\textwidth}{0.4pt}\\[0.2\baselineskip]{\fontsize{45}{45}\scshape CS 170: Efficient Algorithms and \\[-0.3\baselineskip] Intractable Problems \\[0.2\baselineskip] \calligra Spring 2017 \\[0.2\baselineskip]}
+{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}}
+\rule{\textwidth}{1.6pt}\\[\baselineskip]\vspace{0.05\textheight}{{\fontsize{45}{45}\scshape$\bullet$\\ {Homework 9}\\\vspace*{0.01\textheight} }{{\fontsize{18}{18}\scshape{Due on Tuesday, April 18th, 2017 at 11:59am\\}}}\fontsize{45}{45}\scshape$\bullet$  \\}\vspace*{0.1\textheight}{\fontsize{12}{12}\calligra Solutions by\\}{\fontsize{28}{28}\scshape \Name \\}\vspace*{0.01\textheight}{\fontsize{12}{12}\scshape \SID} \\\vspace*{0.05\textheight}{\fontsize{12}{12}\calligra In collaboration with\\}\vspace*{0.01\textheight}{\fontsize{12}{12}\scshape \Collabs} \\\vspace*{0.05\textheight}\end{center}}\end{tcolorbox}\newgeometry{margin=0.75in}}\def\BeginSolution{\begin{yframed}\textbf{\color{red}Solution }}\def\EndSolution{\end{yframed}}
+\usepackage{algorithm}\usepackage[noend]{algpseudocode}\makeatletter\def\BState{\State\hskip-\ALG@thistlm}\makeatother\def\T{\indent}\def\star{\bigstar}
+\usetikzlibrary{arrows}
+\usepackage{tikz}
+\usepackage{scrextend}
+\usepackage[linguistics]{forest}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\hypersetup{colorlinks=true,urlcolor=blue}
+%%%%% Don't Make Changes Above Here %%%%%
+
+%%%%% Template Begins Here %%%%%
+
+\def\Name{Ninh DO}  % Your name
+\def\SID{25949105}  % Your student ID number
+\def\Collabs{NONE} % Your collaborators here with a comma between each person's name. Write None if no collaborators. Don't leave blank.
+
+
+\pagestyle{empty}
+\begin{document}
+\Title
+%%%% Problem 1 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 1: Basic Complexity Concepts}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star$ Level}\end{myboxot}
+
+\begin{enumerate}[a.]
+\item Suppose we reduce a problem $A$ to another problem $B$. This means that if we have an algorithm that solves $\rule{0.5cm}{0.15mm}$, we immediately have an algorithm that solves $\rule{0.5cm}{0.15mm}$.
+\BeginSolution % 1(a)
+% Solution Here
+\\
+Suppose we reduce a problem $A$ to another problem $B$. This means that if we have an algorithm that solves $B$, we immediately have an algorithm that solves $A$.
+\EndSolution
+\item Again, suppose we show a (polynomial-time) reduction from $A$ to $B$. This implies that up to polynomial factors, $\rule{0.5cm}{0.15mm}$ cannot be any easier than $\rule{0.5cm}{0.15mm}$.
+\BeginSolution % 1(b)
+% Solution Here
+\\
+Again, suppose we show a (polynomial-time) reduction from $A$ to $B$. This implies that up to polynomial factors, $B$ cannot be any easier than $A$.
+\EndSolution
+\item Define the class \textbf{NP} in one sentence. \textit{There are several correct characterizations. One of them is the most intuitive, and the definition we use in this class. Give this definition.}
+\BeginSolution % 1(c)
+% Solution Here
+\\
+The search problems whose suggested solutions can be checked in polynomial time.
+\EndSolution
+\item Define the class \textbf{NP}-hard in one sentence.
+\BeginSolution % 1(d)
+% Solution Here
+\\
+The problems to which all NP problems reduce to. They cannot be solved in polynomial time but can be solved in exponential time, can or cannot be checked in polynomial time.
+\EndSolution
+\item Define the class \textbf{NP}-complete in one sentence.
+\BeginSolution % 1(e)
+% Solution Here
+\\
+The problems which are NP and NP-hard
+\EndSolution
+\item Show that for any problem $\Pi$ in \textbf{NP}, there is an algorithm which solves $\Pi$ in time $\mathcal{O}{(2^{p(n)})}$, where $n$ is the size of the input instance and $p(n)$ is a polynomial (which may depend on $\Pi$).
+\BeginSolution % 1(f)
+% Solution Here
+\\
+Since all problems in NP reduce to NP-complete problem in polynomial time. For example, KNAPSACK problem can be solved in exponential time $O(2^{f(n)})$. Reduction of $\Pi$ to KNAPSACK takes $g(n)$ time, so the total runtime is $O(g(n) * 2^{f(n)})$ which is bounded by $O(2^{g(n) + f(n)}) = O(2^{p(n)})$, for $p(n) = g(n) + f(n)$.
+\EndSolution
+\end{enumerate}
+%%%% Problem 1 Ends Here %%%%
+\clearpage
+
+%%%% Problem 2 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 2: Proving NP-completeness by generalization}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star$ Level}\end{myboxot} 
+
+\noindent Proving \textbf{NP}-completeness by generalization. For each of the problems below, prove that it is \textbf{NP}-complete by showing that it is a generalization of some \textbf{NP}-complete problem we have seen in the lecture or in the book. You only need to show the reduction part in this problem (there is no need to show that the problem is in \textbf{NP}).
+
+\begin{enumerate}[a.]
+\item \textsc{SUBGRAPH ISOMORPHISM}: Given as input two undirected graphs $G$ and $H$, determine whether $G$ is a subgraph of $H$ (that is, whether by deleting certain vertices and edges of $H$ we obtain a graph that is, up to renaming of vertices, identical to $G$), and if so, return the corresponding mapping of $V(G)$ into $V(H)$.
+\BeginSolution % 2(a)
+% Solution Here
+\\
+This is a generalization of the CLIQUE problem: Given a graph $H$ and a positive integer $k$, a full graph $G$ of $k$ vertices is a subgraph of $H$ iff it is a $k$-vertex clique.
+\EndSolution
+\item \textsc{LONGEST PATH}: Given a graph $G$ and an integer $g$, find in $G$ a simple path of length $g$.
+\BeginSolution % 2(b)
+% Solution Here
+\\
+This is a generalization of the RUDRATA CYCLE/HAMILTON PATH problem: Given a graph $G$ of all edges 1 and $g = |V| - 1$, there exists a simple path of length $g$ iff there is a Hamilton path.
+\EndSolution
+\item \textsc{MAX SAT}: Given a CNF formula and an integer $g$, find a truth assignment that satisfies at least $g$ clauses.
+\BeginSolution % 2(c)
+% Solution Here
+\\
+This is a genalization of the 3SAT problem: Given a CNF formula of $m$ clauses and an integer $g = m$, there exists a truth assignment that satisfies at least $g = m$ clauses iff there is a solution to 3SAT.
+\EndSolution
+\item \textsc{DENSE SUBGRAPH}: Given a graph and two integers $a$ and $b$, find a set of a vertices of $G$ such that there are at least $b$ edges between them.
+\BeginSolution % 2(d)
+% Solution Here
+\\
+This is a generalization of the CLIQUE problem: Given a graph $G$ and two integers $a$ and $b = a(a-1)/2$, there exists a set of $a$ vertices $ V'\subset V$ with $b = a(a-1)/2$ edges between them iff there is a $a$-vertex clique.
+\EndSolution
+\item \textsc{SPARSE SUBGRAPH}: Given a graph and two integers $a$ and $b$, find a set of vertices of $G$ such that there are at most $b$ edges between them.
+\BeginSolution % 2(e)
+% Solution Here
+\\
+This is a generalization of the INDEPENDENT SET problem: Given a graph $G$ and two integers $a$ and $b = 0$, there exists a set of $a$ vertices $ V'\subset V$ with $b = 0$ edge between them iff there is a $a$-vertex independent set.
+\EndSolution
+\end{enumerate}
+%%%% Problem 2 Ends Here %%%%
+\clearpage
+
+%%%% Problem 3 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 3: Reduction, Reduction, Reduction}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star$ Level}\end{myboxot} 
+
+\noindent \textbf{Instruction:} In this problem, you will prove three problems are \textbf{NP}-Complete. Please be aware that to prove a problem is \textbf{NP}-Complete, you need to argue it is in \textbf{NP} and then briefly justify a reduction that shows it is \textbf{NP}-hard.
+
+\begin{enumerate}[1.]
+\item Alice and Bob go out on a date at a nice restaurant. At the end of the meal, Alice has eaten $c_A$ dollars worth of food, and has in her wallet a set of bills $A=\big\{a_1,a_2,\ldots ,a_n\big\}$. Similarly, Bob owes the restaurant $c_B$ dollars and has bills $B=\big\{b_1,b_2,\ldots ,b_m\big\}$. Now, Alice and Bob are very calculating people, so they agree that each of them should pay their fair share ($c_A$ and $c_B$, respectively).\\[2pt]
+One thing they don't mind doing, however, is fairly trading bills. That is, Alice can exchange a subset of $A'\subseteq A$ of her bills for a subset $B'\subseteq B$ of Bob's bills, so long as $\sum_{a\in A'} a=\sum_{b\in B'} b$. Under the above conditions, Alice and Bob wish to find, after trading as many times as desired, subsets of their bills $A^*$, $B^*$ such that $\sum_{a\in A^*} a = c_A$ and $\sum_{b\in B^*} b = c_B$.\\[4pt]
+Show that \textsc{Fair Date} is \textbf{NP}-complete.\\[2pt]
+\textbf{Hint:} You may assume \textsc{SUBSET SUM} is \textbf{NP}-complete.
+\BeginSolution % 3 (1)
+% Solution Here
+\\
+\textbf{NP:} Given a solution, two sets of bills from $A$ and $B$, we can verify if their sums make $c_A$ and $c_B$, respectively, in linear time. Then we can check back if the trading was fair by identifying these bills that are not in the original $A$ and $B$ sets. These bills are the result of trading and their sums should be equal. This verification can be done in polynomial time. Thus, the problem is NP.\\
+\textbf{NP-hard:} The SUBSET SUM problem reduces to this problem in the way that if we set the set B empty and we let B eat nothing, then Alice has to take a subset of bills, from her set $A$, whose amount exactly equal to $c_A$. Similar to Bob if Alice eats nothing and has no bills in her set $A$. Thus the problem is NP-hard.\\
+The problem is both NP and NP-hard, so it is NP-complete.
+\EndSolution
+\item Consider the following problem \textsc{Public Funds}:
+\begin{addmargin}[0.75cm]{0cm}
+You are looking to build a new fence for your mansion, to keep out pesky people protesting profligate purchases. You have $m$ bank account at your disposal to use to pay for your fence; each account $i$ has a balance of $b_i$. You must choose one of $n$ options for your fence; each fence $j$ costs $c_j$ dollars. You would like to withdraw from at most $k$ of the bank accounts to build the fence, and due to peculiar UC accounting rules, if you use a particular bank account, you must use the whole balance (all $b_m$ dollars.)\\[2pt]
+Determine whether it is possible to exactly pay for some fence $j$; that is, whether there is a $j$ between $1$ and $n$ such that you can withdraw exactly $c_j$ dollars given the bank account balances $b_1,\ldots,b_m$, the fence costs $c_1,\ldots,c_n$ and $k$, and if so return the corresponding choice of fence and set of of bank accounts that you withdraw from.
+\end{addmargin}
+Show that \textsc{Public Funds} is \textbf{NP}-Complete.
+\BeginSolution % 3 (2)
+% Solution Here
+\textbf{NP:} Given a solution, we can easily verify that: 1. it forms a subset of $m$ balances (quadratic time), 2. their sum is equal to some $c_j$ (linear time), 3. the number of balance is at most $k$ (constant or linear time). In other words, the solution can be verified in polynomial time. Thus, the problem is NP.\\
+\textbf{NP-hard:} the SUBSET SUM problem reduces to this problem in the way that if we narrow down the set of fence into one fence $c$ and we are allow to withdraw at most $k = m$ of the bank accounts from total $m$ accounts, then the problem is equivalent to the SUBSET SUM problem: find a subset of the set of m bank accounts whose sum is equal $c$, the value of the fence. Thus, there exists a solution for this SUBSET SUM problem iff there is a solution for PUBLIC FUND problem with $k = m$ and the set of fences has 1 element. This reduces the SUBSET SUM problem to PUBLIC FUND problem, and since the former is NP-complete, the latter is either NP-complete or NP-hard.\\
+The PUBLIC SUM problem is both NP and NP-hard, so it is NP-complete.
+\EndSolution
+\item Consider the search problem \textsc{Max-Acyclic-Induced-Subgraph}:\\[2pt]
+\textsc{Input}: A \textit{directed} graph $G=(V,E)$, and a positive integer $k$.\\[2pt]
+\textsc{Output}: A subset $S\subseteq V$ of size $k$ such that the graph $G_S$ obtained from $G$ by keeping exactly those edges both whose endpoints are in $S$ is a DAG.\\[2pt]
+Show that \textsc{Max-Acyclic-Induced-Subgraph} is \textbf{NP}-complete.
+\BeginSolution % 3 (3)
+% Solution Here
+\textbf{NP:} Given a solution, we can verify if it forms a $k$-vertex subset of $V$ in polynomial time (either linear or quadratic or any in between), and if the graph $G_S$ is a DAG in linear time. Thus, the solution can be verified in polynomial time. It is NP.\\
+\textbf{NP-hard:} The INDEPENDENT SET problem reduces to this problem in the way that given an undirected graph $G$, we can make it directed by replacing every edge by two oppositely directed edges, called graph $G'$. Then we will see G has k-vertex independent set iff $G'$ has DAG. Since, if there is an edge between two vertices in $G'$, there is a directed cycle between them and they are also not in an independent set. Thus, there must not be any edge between any two vertices in the independent set that forms a DAG. The MAX-ACYCLIC-INDUCED-SUBGRAPH is NP-hard.\\
+The MAX-ACYCLIC-INDUCED-SUBGRAPH problem is both NP and NP-hard, so it is NP-complete.
+\EndSolution
+\end{enumerate}
+%%%% Problem 3 Ends Here %%%%
+\clearpage
+
+%%%% Problem 4 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 4: Graphs and Matrix Multiplication.}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star\star$ Level}\end{myboxot} 
+
+\noindent Consider the \textsc{matrix multiplication} problem:\\
+
+\noindent \tab \textit{Input:} Two $n\times n$ matrices $M_1$ and $M_2$.\\
+\tab \textit{Output:} The matrix product $M_1M_2$.\\
+
+\noindent Suppose there is an algorithm which solves \textsc{matrix multiplication} in time $t(n)$.
+
+\vspace{4pt}
+\begin{enumerate}[(a)]
+\item Show that given $M$ and an integer $p>0$, you can computer $M^p$ in time $\mathcal{O}{(t(n)\log{p})}$. You only need to prove a main idea and show how to satisfy the time complexity requirement.
+\BeginSolution % 4 (a)
+% Solution Here
+\\
+\underline{\textbf{Main idea:}}
+%
+\begin{equation*}
+	M^p = \begin{cases}
+	\left( M^{\frac{p}{2}} \right)^2 \ \ \qquad\qquad \text{if $p$ even}\\
+	\left( M^{\floor* {\frac{p}{2}}} \right)^2 \cdot M \qquad \text{if $p$ odd}
+	\end{cases}
+\end{equation*}
+%
+Use devide-and-conquer: recursively divide the power by half, we can build a tree of height $\log p$. In best case $p = 2^k$ we perform $\log p$ matrix multiplications, each with $t(n)$ time. In worst case $p = 2^k - 1$ we perform $2\log p$ matrix multiplications, each with $t(n)$ time. Therefore, the total runtime is $O(t(n)\log p)$.\\
+\underline{\textbf{Proof of correctness:}}
+\\
+It is obvious, we use recursion without magic, based on the equation above. It is correct.\\
+\underline{\textbf{Run time:}}
+\\
+$O(t(n)\log p)$ as above.
+\EndSolution
+\item Given a directed graph $G$ in adjacency matrix representation and two nodes $s$ and $t$, you want to know whether there is a path from $s$ to $t$. This is callsed the \textsc{graph reachability} problem. Show that you can solve \textsc{graph reachability} in time $\mathcal{O}{(t(n)\log{n})}$, where $n$ is the number of nodes in the graph. You need to first give the main idea, and justify the time complexity requirement. Also you need to prove that your algorithm is correct.\\
+\textbf{Hint 1:} It may help to use part (a).\\
+\textbf{Hint 2:} In matrix multiplication, what does ${(A^k)}_{ij}$ mean?
+\BeginSolution % 4 (b)
+% Solution Here
+\\
+\underline{\textbf{Main idea:}}
+\\
+We call $s$, $t$ start and terminal, as well as the matrix indices of $s$ row and $t$ column, respectively.\\
+We perform matrix multiplication in binary search style, i.e. $A^2$, $A^4$, $A^8$, etc. until either $\left(A^k\right)_{st} \neq 0$ or $\left(A^k\right)_{s:} = 0's$ ($s$ row of $A^k$ has all zeros). If it is the former case, the algorithm terminates, there is a path from $s$ to $t$. If it is the latter case, we know that we might have passed the order where $\left(A^k\right)_{st} \neq 0$, we have to back-track in binary search style to find that order (or maybe there is no such an order). The way we back-track is we jump to the middle of the last interval. For example, if $\text{any}\left(\left(A^{16}\right)_{s:}\right) \neq 0$ and $\left(A^{32}\right)_{s:} = 0's$, we check $\left(A^{24}\right)_{s:}$. If $\text{any}\left(\left(A^{24}\right)_{s:}\right) \neq 0$, we check $\left(A^{28}\right)_{s:}$; otherwise, we check $\left(A^{20}\right)_{s:}$, and so on. When we find $\left(A^k\right)_{st} \neq 0$ or there is no such $k$, we terminate our algorithm.\\
+Again, if there exists any k that $\left(A^k\right)_{st} \neq 0$, there is a path from $s$ to $t$. Otherwise, there is not. \\
+\underline{\textbf{Proof of correctness:}}
+\\
+We observe that $\left(A^2\right)_{ij}$ indicates if there is a path of two edges from $i$ to $j$, $\left(A^3\right)_{ij}$ indicates if there is a path of three edges from $i$ to $j$, ..., $\left(A^k\right)_{ij}$ indicates if there is a path of $k$ edges from $i$ to $j$.\\
+Back to our algorithm, instead of sweeping from 1 to $n$, we jump in binary search way to reduce the runtime. If we jump over past the value $k$, we jump back in binary search way again. This guarantees that we will not miss the interesting value $k$ while still reduce the runtime from a factor of $n$ to a factor of $\log n$
+\underline{\textbf{Run time:}}
+\\
+Since we use binary search strategy, and there are maximum $n$ vertices, the number of matrix multiplication is $\log n$. Each matrix multiplication takes $t(n)$ time, so the total runtime is $t(n)\log n$
+\EndSolution
+\item Now, suppose you know that graph reachability cannot be solved in time $\mathcal{O}{(T(n)\log{n})}$. Show that \textsc{matrix multiplication} cannot be solved in time $\mathcal{O}{(T(n))}$. This should be a very simple proof.
+\BeginSolution % 4 (c)
+% Solution Here
+\\
+We use contradiction: assume that matrix multiplication can be solved in time $\mathcal{O}{(T(n))}$, then the graph reachability can be solved in $\mathcal{O}{(T(n)\log{n})}$ according to part (b). This contradicts the fact that graph reachability cannot be solved in time $\mathcal{O}{(T(n)\log{n})}$. Thus, matrix multiplication can be solved in time $\mathcal{O}{(T(n))}$.
+\EndSolution
+\end{enumerate}
+%%%% Problem 4 Ends Here %%%%
+\clearpage
+
+%%%% Problem 5 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 5: Finding Zero(s)}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star\star\star$ Level}\end{myboxot} 
+
+\noindent Consider the problem \textsc{Integer-Zeros}.\\
+
+\noindent \textsc{Input}: A multivariate polynomial $P(x_1,x_2,x_3,\ldots,x_n)$ with integer coefficients, specified as a sum of monomials.
+
+\noindent \textsc{Output}: Integers $a_1,a_2,\ldots,a_n$ such that $P(a_1,a_2,a_3,\ldots,a_n)=0$.\\
+
+\noindent Show that 3-SAT reduces in polynomial time to \textsc{Integer-Zeros}. (You do not need to show that \textsc{Integer-Zeros} is in \textbf{NP}: in fact, it is know \textit{not} to be in \textbf{NP}).
+
+\noindent \textbf{Hint 1:} Given a 3-SAT formula $\phi$ in the variables $x_1,x_2,\ldots,x_n$, your reduction $f$ will produce a polynomial $P$ in the same variables such that satisfying assignments correspond to 0, 1 valued zeros of $P$.\\
+\textbf{Hint 2:} If your polynomial constructed above has exponential amount of terms, it is not optimal! You need to reduce it to polynomial amount. Think about the equality $a^2+b^2=0$ if and only if $a=b=0$ when $a,b$ are real to achieve it. \footnote{Fun fact: This problem \textsc{Integer-Zeros} is \textit{really} hard: the decision version of the problem is \textit{undecidable}. This means that there is provably no algorithm which, given a multivariate polynomial, will decide correctly whether or not it has integer zeros. However, if we relax the problem to ask if there are \textit{real} numbers at which the given polynomial vanishes, then the problem surprisingly becomes decidable! For Blue and Gold jingoists: the above decidability result was proven by Alfred Tarski, a Berkeley professor, in 1949. The undecidability of \textsc{Integer-Zeros} was proven by Yuri Matiyasevich (at the ripe old age of 23!) in 1970, building upon previous work of another Berkeley professor, Julia Robinson.}
+\BeginSolution % 5
+% Solution Here
+\\
+Consider a special case of the INTEGER-ZEROS problem that all variable $x_1,x_2,\cdots,x_n$ take value either 0 or 1. If we specify that $0$ indicates true and $1$ indicates false, we will see that each monomial is $0$ if at least one factor is $0$. Thus, each monomial is equivalent to a clause of disjunction of a number of variables.\\
+Each monomial has non-negative value, so the sum of all monomials, or the value of polynomial, is $0$ (true) iff all monomials is $0$ (true, or satisfied). Thus, the polinomial is equivalent to the Boolean formula.\\
+In conclusion, given a multivariable polynomial $P$ of $x_1,x_2,\cdots,x_n$ taking either $0$ or $1$, there exists a set $a_1,a_2,\cdots,a_n$ such that $P(a_1,a_2,\cdots,a_n) = 0$ iff there is a satisfying truth assisgnment for the equivalent 3SAT problem.
+\EndSolution
+%%%% Problem 5 Ends Here %%%%
+\clearpage
+
+\end{document}
+%%%%% Template Ends Here %%%%%

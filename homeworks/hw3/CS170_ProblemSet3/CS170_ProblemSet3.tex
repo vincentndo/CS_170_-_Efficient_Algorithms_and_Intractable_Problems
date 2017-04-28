@@ -1,0 +1,239 @@
+%%%%% Don't Make Changes Below Here %%%%%
+\documentclass{article}\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[margin=0.4cm,top=0.4cm,bottom=0.4cm]{geometry}\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}\usepackage{calligra}\usepackage{tikz}\usetikzlibrary{matrix,fit,chains,calc,scopes}\usepackage{tcolorbox}\tcbuselibrary{skins}\tcbset{Baystyle/.style={sharp corners,enhanced,boxrule=6pt,colframe=Aquamarine,height=\textheight,width=\textwidth,borderline={8pt}{-11pt}{},}}\usepackage{amsmath,amssymb,amsthm,tikz,tkz-graph,color,chngpage,soul,hyperref,csquotes,graphicx,floatrow}\newcommand*{\QEDB}{\hfill\ensuremath{\square}}\newtheorem*{prop}{Proposition}\renewcommand{\theenumi}{\alph{enumi}}\usepackage[shortlabels]{enumitem}\usetikzlibrary{matrix,calc}\MakeOuterQuote{"}\newtheorem{theorem}{Theorem} \usetikzlibrary{shapes} \usepackage{lipsum}\usepackage{tabularx,ragged2e,booktabs,caption}\tcbuselibrary{breakable}\newenvironment{yframed}{\begin{tcolorbox}[breakable,colback=gray!3,title after break={\textit{\color{red}Solution (cont.)}},colbacktitle=gray!3, coltitle=black,titlerule=-1pt] }{\end{tcolorbox}}\newtcolorbox{mybox}{colback=black!15!white, colframe=white,arc=12pt}\newtcolorbox{myboxot}{colback=green!15!white, colframe=white,arc=12pt,width=110pt, height=27pt}\newtcbox{\mylib}{enhanced,boxrule=0pt,top=0mm,bottom=0mm,right=0mm,left=4mm,arc=4pt,boxsep=9pt,before upper={\vphantom{dlg}},colframe=green!50!black,coltext=green!25!black,colback=green!10!white,overlay={\begin{tcbclipinterior}\fill[green!75!blue!50!white] (frame.south west)rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {Problem} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}\newtcbox{\mylibot}{enhanced,boxrule=0pt,top=0mm,bottom=0mm,right=0mm,arc=4pt,boxsep=9pt,before upper={\vphantom{dlg}},colframe=green!50!black,coltext=green!25!black,colback=green!10!white,overlay={\begin{tcbclipinterior}\fill[red!75!blue!50!white] (frame.south west)rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=90] {Other} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+\def\Title{\begin{tcolorbox}[Baystyle,]{\begin{center}\vspace*{0.14\textheight}
+{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}}
+\rule{\textwidth}{0.4pt}\\[0.2\baselineskip]{\fontsize{45}{45}\scshape CS 170: Efficient Algorithms and \\[-0.3\baselineskip] Intractable Problems \\[0.2\baselineskip] \calligra Spring 2017 \\[0.2\baselineskip]}
+{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}}
+\rule{\textwidth}{1.6pt}\\[\baselineskip]\vspace{0.05\textheight}{{\fontsize{45}{45}\scshape$\bullet$\\ {Homework 3}\\\vspace*{0.01\textheight} }{{\fontsize{18}{18}\scshape{Due on Tuesday, Februrary 14th, 2017 at 11:59am\\}}}\fontsize{45}{45}\scshape$\bullet$  \\}\vspace*{0.1\textheight}{\fontsize{12}{12}\calligra Solutions by\\}{\fontsize{28}{28}\scshape \Name \\}\vspace*{0.01\textheight}{\fontsize{12}{12}\scshape \SID} \\\vspace*{0.05\textheight}{\fontsize{12}{12}\calligra In collaboration with\\}\vspace*{0.01\textheight}{\fontsize{12}{12}\scshape \Collabs} \\\vspace*{0.05\textheight}\end{center}}\end{tcolorbox}\newgeometry{margin=0.75in}}\def\BeginSolution{\begin{yframed}\textbf{\color{red}Solution }}\def\EndSolution{\end{yframed}}
+\usepackage{algorithm}\usepackage[noend]{algpseudocode}\makeatletter\def\BState{\State\hskip-\ALG@thistlm}\makeatother\def\T{\indent}\def\star{\bigstar}
+\usetikzlibrary{arrows}
+%%%%% Don't Make Changes Above Here %%%%%
+
+%%%%% Template Begins Here %%%%%
+
+\def\Name{Ninh DO}  % Your name
+\def\SID{25949105}  % Your student ID number
+\def\Collabs{None} % Your collaborators here with a comma between each person's name. Write None if no collaborators. Don't leave blank.
+
+
+\pagestyle{empty}
+\begin{document}
+\Title
+%%%% Problem 1 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 1: Dijkstra's Durability}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star$ Level}\end{myboxot} 
+
+\noindent For the following claims, answer yes or no and provide justification. Consider an arbitrary graph $G$ with positive edge weights. Shortest path means least cost path.
+\begin{enumerate}
+\item Suppose we want to know the distance from a node $s$ to a node $t_1$, so we run Dijkstra's algorithm. Now suppose we also want to know the distance from $s$ to another node $t_2$. Do we need to run the algorithm again?
+\BeginSolution % 1a
+% Solution Here
+\\
+NO. When we run Dijkstra's algorithm, we find the shortest paths from the start to all node.
+
+\EndSolution
+\item Suppose we know the shortest path from a node $s$ to another node $t$. Is the shortest path (the sequence of nodes, not the total cost) always the same if we add $k$ to all edge weights, where $k$ is an arbitrary positive number?
+\BeginSolution % 1b
+% Solution Here
+\\
+NO. If the shortest path $P_1$ from S to G has, say, 100 nodes (including S and G), each edge of this path has length 1, and another path $P_2$ directly from S to G has lenghth 110. Then if we add k = 100 to each edge length, P1 will become far more longer than P2. The reason is the number of nodes does matter in this case.
+%
+\begin{lstlisting}
+           8                                          18
+ S-------------------G                       S-------------------G
+1 \                 / 1  +  k = 10   -->   11 \                 / 11
+   A---B---C---D---E                           A---B---C---D---E
+     1   1   1   1                               11  11  11  11
+Shortest path: S-A-B-C-D-E-G                  Shortest path: S-G
+\end{lstlisting}
+%
+
+\EndSolution
+\item Now answer the same question, except we multiply by $k$ instead of adding $k$.
+\BeginSolution % 1c
+% Solution Here
+YES. Suppose the shorted path $P_1$ has m edges and the other $P_2$ has n edge. We have:
+%
+\begin{equation}
+\sum\limits^m_{i=0} e_{2_i} < \sum\limits^n_{i=0} e_{2_i}
+\end{equation}
+%
+Multiplying both sides with k does not change the comparision sign <.
+
+\EndSolution
+\end{enumerate}
+
+%%%% Problem 1 Ends Here %%%%
+\clearpage
+
+%%%% Problem 2 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 2: Biconnected Components}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star\star\star$ Level}\end{myboxot} 
+
+\noindent Let $G=(V,E)$ be a connected undirected graph. For any two edges $e,e'\in E$, we say that $e\sim e'$ if either $e=e'$ or there is a (simple) cycle containing both $e$ and $e'$. We say a set of edges $C$ is a \textit{biconnected component} if there is some edge $e\in E$ such that $C=\{e'\in E\mid e\sim e'\}$.
+
+\begin{enumerate}
+\item Show that two distinct biconnected components cannot have any edges in common. (Note: That this is equivalent to showing that if $e'\sim e_1$ and $e'\sim e_2$.)
+\BeginSolution % 2a
+% Solution Here
+Let $B$ and $C$ be two distinct biconnected components defined by $B-\{e'\mid e_1\sim e'\}$ and $C=\{e'\mid e_2\sim s'\}$, where $e_1$ and $e_2$ are distinct edges. Suppose $B$ and $C$ share edge $f$ in common. Then $f\sim s_1$ and $f\sim e_2$. But this implies $e_1\sim e_2$. 
+
+\vspace{3pt}
+To see why, note that it is clearly true if $f=e_1$ or $f=e_2$. Otherwise, there is a simple cycle containing $f$ and $e_1$ and a simple cycle containing $f$ and $e_2$. The union of these two simple cycles contains a simple cycle that has both $e_1$ and $e_2$ as edges. (Convince yourself why. Drawing some visuals may help.)
+
+\vspace{3pt}
+By a similar argument, if $e'\sim e_1$, then $e'\sim e_2$ because $e_1\sim e_2$. Likewise, if $e'\sim e_2$, then $e'\sim e_1$. Thus, $B=C$, contradicting the fact that they are distinct sets.
+\EndSolution
+\item Associate with each biconnected component all the vertices that are endpoints of its edges. Show that the vertex sets corresponding to two different biconnected components are either disjoint or intersect in a single vertex. Such a vertex is a \textit{separating vertex}.
+
+\noindent 
+Note that a separating vertex, if removed, would disconnect the graph. We will now walk you through how you can use DFS to identify the biconnected components and separating vertices of a graph in linear time. Consider a DFS tree of $G$.
+\BeginSolution % 2b
+% Solution Here
+
+\EndSolution
+\item Show that the root of the DFS tree is a separating vertex if and only if it has more than one child in the tree.
+\BeginSolution % 2c
+% Solution Here
+
+\EndSolution
+\item Show that a non-root vertex $v$ of the DFS tree is a separating vertex if and only if it has a child $v'$ none of whose descendants (including itself) has a backedge to a proper ancestor of $v$.
+
+\noindent For each vertex $u$ define $\operatorname{pre}(u)$ to be the pre-visit time of $u$. For two vertices $u$ and $w$, $w$ is a \textbf{backcestor} of $u$ if and only if the following two conditions both hold:
+\begin{enumerate}[1.]
+\item $w$ is an ancestor of $u$.
+\item $\exists$ (back) edge $(u,w)$ OR $\exists$ (back) edge $(v,w)$, where $v$ is some descendant of $u$ in the DFS tree.
+\end{enumerate}
+\noindent Define $\operatorname{low}(u)$ to be the minimum possible value of $\operatorname{pre}(w)$, where $w$ is a backcestor of $u$.
+
+\noindent Another way of stating the result of (d) is that a non-root vertex $u$ is a separating vertex if and only if $\operatorname{pre}(u)\leqslant \operatorname{low}(v)$ for any child $v$ of $u$.
+\BeginSolution % 2d
+% Solution Here
+
+\EndSolution
+\item Give an algorithm that computes all separating vertices and biconnected components of a graph in linear time. 
+
+\textit{Hint: Think of how to compute $\operatorname{low}$ in linear time with DFS. Use $\operatorname{low}$ to identify separating vertices and run an additional DFS with an extra stack of edges to remove biconnected components one at a time.}
+
+\noindent \textit{No need for a full 4-part solution. Just give a clear description of the algorithm, in plain English or psuedocode, and running time analysis.}
+\BeginSolution % 2e
+% Solution Here
+
+\EndSolution
+\end{enumerate}
+
+%%%% Problem 2 Ends Here %%%%
+\clearpage
+
+%%%% Problem 3 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 3: Alternative Factory}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star$ Level}\end{myboxot} 
+
+\noindent You have the unfortunate predicament that you frequently find yourself inexplicably trapped within factories, a different one every time. Each factory consists of many small platforms, connected by a network of conveyor belts. Being an amateur surveyor, you can accurately calculate the time it takes to ride each conveyor belt with a quick glance. Some platforms have a button on them. Whenever you press one of these buttons, ALL conveyor belts in the factory reverse direction. A factory has one exit; you want to get there as quickly as possible. Give an efficient algorithm in $\mathcal{O}((|V|+|E|)\log{|V|})$ time, to find the fastest way out of the factory. 
+
+\vspace{3pt}
+\noindent You only need to give a main idea and running time analysis. Be sure your main idea clearly and fully describes your algorithm.
+
+\vspace{3pt}
+\noindent For convenience, you can treat the factory as a graph, with the platforms being vertexes and the conveyor belts being directed edges. You know before running your algorithm the platform $s$ at which you start, the location of the exit $t$, and the location of all buttons (think of this as a list of button locations). You can determine the time it takes to traverse the conveyor belt between any two platforms $u$ and $v$ via the function $\ell (u,v)$.
+
+\vspace{3pt}
+\noindent Notes in case you want to pick at the details:
+\begin{itemize}
+\item It takes a negligible amount of time to get from one end of a platform to the other.
+\item The time it takes to press a button is also negligible.
+\item You can't run up a conveyor belt the wrong way.
+\item You may assume $\ell (u,v) = \ell (v,u)$.
+\item Be warned that you should throw out your sense of spatial reasoning. You have seen all kinds of setups of conveyor belt configurations, sometimes with thousands of conveyor belts connected to a single platform.
+\end{itemize}
+\textit{Hint: Try to construct a new graph that encodes the state of the conveyor belts. Perhaps your new graph will have twice as many vertexes as the original.}
+\\
+\BeginSolution % 3
+% Solution Here
+
+\EndSolution
+%%%% Problem 3 Ends Here %%%%
+\clearpage
+
+%%%% Problem 4 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 4: Shortest Path Oracle}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star$ Level}\end{myboxot} 
+
+\noindent Given a connected, directed graph $G=(V,E)$ with positive edge weights, and vertices $s$ and $t$, you want to find the shortest path from $s$ to $t$ in a graph in $\mathcal{O}(|E|+|V|)$ time. Normally, this wouldn?t be possible; however, you have consulted the Order Oracle, who gave you a list $L$ of the $V$ vertices in increasing order of the shortest-path distance from $s$.
+
+\vspace{3pt}
+\noindent In other words, $L[1]$ is $s$, $L[2]$ is the closest other vertex to $s$, $L[|V|]$ is the farthest vertex from $s$, etc. Design  an algorithm \textsc{ShortestPath}$(G,s,t,L)$ which computes the shortest $s\to t$ path in $\mathcal{O}(|E|+|V|)$ time.
+\\
+\BeginSolution % 4
+% Solution Here
+\\
+\underline{\textbf{Main idea:}}\\
+Run the Dijkstra's algorithm with a modified fringe. The new fringe now is an array of length $|V|$. When we expand a node, put its chidren into the fringe at the position corresponding to their position in L. Choose next node to expand according to their order in the array.\\
+\underline{\textbf{Pseudocode:}}\\
+%
+\begin{lstlisting}
+procedure modified_dijkstra(G; l; s)
+Input: Graph G = (V; E), directed;
+       positive edge lengths fle : e 2 Eg; vertex s 2 V
+Output: For all vertices u reachable from s, dist(u) is set
+        to the distance from s to u.
+        
+for all u 2 V :
+	dist(u) = 1
+	prev(u) = nil
+dist(s) = 0
+H = makeFringeArray(V)
+while H is not empty:
+	u = firstElement(H)
+	for all edges (u; v) 2 E:
+		if dist(v) > dist(u) + l(u; v):
+			dist(v) = dist(u) + l(u; v)
+			prev(v) = u
+\end{lstlisting}
+%
+\underline{\textbf{Proof of Correctness:}}\\
+The invariant of the Dijkstra's algorithm is conserved: the node that is popped out from the fringe is guaranteed to have the shortest path from S thanks to the Oracle Order, so when we come to the node t, it is guarantee to have the shorted path.\\
+\underline{\textbf{Runtime:}}\\
+We process each node only once, and the time to access any node is O(1) since the nodes are in the array. We also go throguh each edge once, so the final runtime is O($|E|$ + $|V|$). 
+
+\EndSolution
+%%%% Problem 4 Ends Here %%%%
+\clearpage
+
+%%%% Problem 5 Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Problem 5: Archipelago Adventure}\end{center}}\end{mybox}\vspace{-2mm}
+\begin{myboxot}\noindent\textbf{$\star\star\star\star\star$ Level}\end{myboxot} 
+
+\noindent As a tourist visiting an island chain, you can drive around by car, but to get between islands you have to take the ferry (more formally, our graph is $G=(V,R\cup F)$. where $V$ is our set of locations (vertices), $R$ is the set of roads, and $F$ is the set of ferry routes). A road is specified as an \textbf{undirected} edge $(u,v,C_{u,v})$ that connects the two points $u,v$ with a \textbf{non-negative} (time) cost $C_{u,v}$. A ferry is specified as a \textbf{directed} edge $(u,v,C_{u,v})$ which connects point $u$ to point $v$ on another island (one way) with cost $C_{u,v}$. Some of the ferries are actually magical fairies so their costs \textbf{can possibly be negative}! Each ferry only runs one way and the routes are such that if there is a ferry from $u$ to $v$, then there is no sequence of roads and ferries that lead back from $v$ to $u$.
+
+\vspace{3pt}
+\noindent Assume we have the the adjacency list representation of roads and fairies (two separate data structures).
+
+\vspace{3pt}
+\noindent You are finished with your vacation so you want to find the shortest (least cost) route from your current location $s$ to the airport $t$ . Design an efficient algorithm to compute the shortest path from $s$ to $t$ (given $V , R, F, s$ and $t$ as inputs). Your running time should be $\mathcal{O}((|V|+|E|)\log{|V|})$, where $E=R\cup F$.
+
+\vspace{3pt}
+\noindent \textit{Hint 1: Notice that the directed (ferry) edges are between different islands, each of which forms a separate (strongly) connected component.}
+
+\vspace{3pt}
+\noindent \textit{Hint 2: If you are stuck, try thinking about the following questions (no credit for answering).}
+\begin{itemize}
+\item \textit{Consider a directed graph with no negative cycles in which the only negative edges are those that leave some node $s$; all other edges are positive. Will Dijkstra's algorithm, started at $s$, work correctly on such a graph? Find a counterexample or prove your answer.}
+\item \textit{Now consider the case in which the only negative edges are those that leave $v$, a vertex different from the start node $s$. Given two vertices $s,t$, find an efficient algorithm to compute the shortest path from $s$ to $t$ (should have the same asymptotic running time as Dijkstra's algorithm).}
+\end{itemize}
+\BeginSolution % 5
+% Solution Here
+
+\EndSolution
+%%%% Problem 5 Ends Here %%%%
+\clearpage
+
+%%%% Problem Redemption Starts Here %%%%
+\vspace{-2mm}\noindent\begin{mybox}{\begin{center}\textbf{\color{black}Optional Redemption File}\end{center}}\end{mybox}\vspace{2mm}
+
+\noindent Submit your \textit{redemption file} for Homework 2 here. If you looked at the solutions and took notes on what you learned or what you got wrong, include them here.
+
+\end{document}
+%%%%% Template Ends Here %%%%%\grid
