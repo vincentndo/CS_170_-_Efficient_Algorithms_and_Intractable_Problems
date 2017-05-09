@@ -325,7 +325,7 @@ if __name__ == "__main__":
     score_list = []
     mode = 0
 
-    for i in range(5,6):
+    for i in range(1,22):
 
         if i == 3:
             mode = 3
@@ -344,7 +344,7 @@ if __name__ == "__main__":
         write_output(i, garg_sack)
         score_list.append( (garg_sack.get_objective() - M) / M )
         # print(score_list)
-        print("    " + str(score_list[i-5]))
+        print("    " + str(score_list[i-1]))
 
     print(sum(score_list) / float(len(score_list)))
     print("Done")
